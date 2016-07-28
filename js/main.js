@@ -140,7 +140,17 @@ $(function () {
       marker.setVisible(true);
     };
     
-    var ps = loadDataLayer(pokestops, 999, null, 'type', {'pokestop':'images/Pstop.png', 'size': 10, 'anchor': [5,10]});
+    var ps = loadDataLayer(
+      pokestops, 
+      999, 
+      function(data) {
+        var h = '<img src="' + data.image  + '" style="width: 100px; height:100px;"/>' +
+                '<table class="table"><tbody>' +
+                '<tr><td>Name</td><td>' + data.name  + '</td></tr>' +
+                '</tbody></table>';
+        return h;
+      }, 
+      'type', {'pokestop':'images/Pstop.png', 'pokestop_nodata': 'images/missing.gif','size': 10, 'anchor': [5,10]});
     $("#chk_pokestop").click(function() {
       if (this.checked) {
         ps.show();

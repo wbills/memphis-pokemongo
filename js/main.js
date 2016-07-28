@@ -161,7 +161,7 @@ $(function () {
                 '</tbody></table>';
         return h;
       }, 
-      'team', { 'Valor': 'images/_valor.png', 'Instinct': 'images/_instinct.png', 'Mystic': 'images/_mystic.png', 'None': 'images/Uncontested.png', 'size': 20, 'anchor': [10,20] });
+      'team', { 'Valor': 'images/valor.png', 'Instinct': 'images/instinct.png', 'Mystic': 'images/mystic.png', 'None': 'images/Uncontested.png', 'size': 20, 'anchor': [10,20] });
     g.show();
     //    g.filter(function(data) {
     //      return data.team == 'Instinct';

@@ -192,7 +192,7 @@ $(function () {
     var v_check = $("#chk_valor");
     
     var toggle_gyms = function() {
-      var teams = [];
+      var teams = ['None']; //just always show these for now
       if (i_check.is(':checked')) {
         teams.push('Instinct');
       }

@@ -162,6 +162,10 @@ $(function () {
     $("#mystic_gyms").html(gym_counts.Mystic);
     $("#valor_gyms").html(gym_counts.Valor);
 
+    $("#instinct_trainers").html(trainer_counts.Instinct);
+    $("#mystic_trainers").html(trainer_counts.Mystic);
+    $("#valor_trainers").html(trainer_counts.Valor);
+
     $("#last_updated").html("Last Updated:<br>" + last_updated);
   };
   google.maps.event.addDomListener(window, 'load', initMap);

@@ -173,9 +173,6 @@ $(function () {
       }, 
       'team', { 'Valor': 'images/valor.png', 'Instinct': 'images/instinct.png', 'Mystic': 'images/mystic.png', 'None': 'images/Uncontested.png', 'size': 20, 'anchor': [10,20] });
     g.show();
-    //    g.filter(function(data) {
-    //      return data.team == 'Instinct';
-    //    });
 
     $("#instinct_gyms").html(gym_counts.Instinct);
     $("#mystic_gyms").html(gym_counts.Mystic);

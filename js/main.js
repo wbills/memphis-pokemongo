@@ -29,7 +29,16 @@ $(function () {
         if (rec[style_attribute]) {
           var style_val = rec[style_attribute];
           if (style_map[style_val]) {
-            marker.setIcon(style_map[style_val]);
+            if (style_map.size) {
+              marker.setIcon({
+                url: style_map[style_val],
+                scaledSize: new google.maps.Size(style_map.size, style_map.size), // scaled size
+                origin: new google.maps.Point(0,0), // origin
+                anchor: new google.maps.Point(style_map.anchor[0],style_map.anchor[1]) 
+              });
+            } else {
+              marker.setIcon(style_map[style_val]);
+            }
           }
         }
       }    
@@ -131,7 +140,7 @@ $(function () {
       marker.setVisible(true);
     };
     
-    var ps = loadDataLayer(pokestops, 999, null, 'type', {'pokestop':'images/Pstop.png'});
+    var ps = loadDataLayer(pokestops, 999, null, 'type', {'pokestop':'images/Pstop.png', 'size': 10, 'anchor': [5,10]});
     $("#chk_pokestop").click(function() {
       if (this.checked) {
         ps.show();
@@ -152,7 +161,7 @@ $(function () {
                 '</tbody></table>';
         return h;
       }, 
-      'team', { 'Valor': 'images/Valor.png', 'Instinct': 'images/Instinct.png', 'Mystic': 'images/Mystic.png', 'None': 'images/Uncontested.png' });
+      'team', { 'Valor': 'images/_valor.png', 'Instinct': 'images/_instinct.png', 'Mystic': 'images/_mystic.png', 'None': 'images/Uncontested.png', 'size': 20, 'anchor': [10,20] });
     g.show();
     //    g.filter(function(data) {
     //      return data.team == 'Instinct';

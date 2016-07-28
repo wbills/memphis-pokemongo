@@ -186,6 +186,33 @@ $(function () {
     $("#valor_trainers").html(trainer_counts.Valor);
 
     $("#last_updated").html("Last Updated:<br>" + last_updated);
+
+    var i_check = $("#chk_instinct");
+    var m_check = $("#chk_mystic");
+    var v_check = $("#chk_valor");
+    
+    var toggle_gyms = function() {
+      var teams = [];
+      if (i_check.is(':checked')) {
+        teams.push('Instinct');
+      }
+
+      if (m_check.is(':checked')) {
+        teams.push('Mystic');
+      }
+
+      if (v_check.is(':checked')) {
+        teams.push('Valor');
+      }
+     
+      g.filter(function(data) {
+        return teams.indexOf(data.team) != -1;
+      });
+    };
+    i_check.click(toggle_gyms);
+    m_check.click(toggle_gyms);
+    v_check.click(toggle_gyms);
+
   };
   google.maps.event.addDomListener(window, 'load', initMap);
 });

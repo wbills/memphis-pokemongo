@@ -168,6 +168,7 @@ $(function () {
                 '<tr><td>Name</td><td>' + data.name  + '</td></tr>' +
                 '<tr><td>Team</td><td>' + data.team  + '</td></tr>' +
                 '<tr><td>Points</td><td>' + data.points + '</td></tr>' +
+                '<tr><td>Level</td><td>' + data.level + '</td></tr>' +
                 '</tbody></table>';
         return h;
       }, 
@@ -177,6 +178,10 @@ $(function () {
     $("#instinct_gyms").html(gym_counts.Instinct);
     $("#mystic_gyms").html(gym_counts.Mystic);
     $("#valor_gyms").html(gym_counts.Valor);
+
+    $("#instinct_gym_levels").html(average_gym_levels.Instinct);
+    $("#mystic_gym_levels").html(average_gym_levels.Mystic);
+    $("#valor_gym_levels").html(average_gym_levels.Valor);
 
     $("#instinct_trainers").html(trainer_counts.Instinct);
     $("#mystic_trainers").html(trainer_counts.Mystic);

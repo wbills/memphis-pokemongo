@@ -159,7 +159,7 @@ $(function () {
       }
     });
 
-    var g = loadDataLayer(
+    var gym_layer = loadDataLayer(
       gyms, 
       1000, 
       function(data) {
@@ -173,7 +173,7 @@ $(function () {
         return h;
       }, 
       'team', { 'Valor': 'images/valor.png', 'Instinct': 'images/instinct.png', 'Mystic': 'images/mystic.png', 'None': 'images/Uncontested.png', 'size': 20, 'anchor': [10,20] });
-    g.show();
+    gym_layer.show();
 
     $("#instinct_gyms").html(gym_counts.Instinct);
     $("#mystic_gyms").html(gym_counts.Mystic);
@@ -207,13 +207,60 @@ $(function () {
         teams.push('Valor');
       }
      
-      g.filter(function(data) {
+      gym_layer.filter(function(data) {
         return teams.indexOf(data.team) != -1;
       });
     };
     i_check.click(toggle_gyms);
     m_check.click(toggle_gyms);
     v_check.click(toggle_gyms);
+
+    var trainer_score = {};
+    for (var g in gyms) {
+      var gym = gyms[g];
+      var gym_level = gym.level;
+      if (gym.trainers) {
+        var trainers = gym.trainers.reverse();
+        for (var t in trainers) {
+          var trainer = trainers[t];
+          var score = gym_level - t; //mario-kart scoring, more points for higher position in gym, higher gyms net you more points
+          if (!trainer_score[trainer.name]) {
+            trainer_score[trainer.name] = {
+              name: trainer.name,
+              team: gym.team,
+              level: trainer.level,
+              total_cp: 0,
+              avg_cp: 0,
+              gyms: 0,
+              points: 0
+            };
+          }
+          trainer_score[trainer.name].gyms += 1;
+          trainer_score[trainer.name].points += score;
+          trainer_score[trainer.name].total_cp += trainer.pokemon_cp; 
+          trainer_score[trainer.name].avg_cp = parseInt(trainer_score[trainer.name].total_cp / trainer_score[trainer.name].gyms, 10);
+        }
+      }        
+    }
+    var score_list = [];
+    for (var k in trainer_score) {
+      score_list.push(trainer_score[k]);
+    }
+    score_list = score_list.sort(function(a,b) {
+      return a.points - b.points;
+    }).reverse();
+    var tops = {
+      "Instinct": null,
+      "Mystic": null,      
+      "Valor": null
+    };
+    for (var s in score_list) {
+      var team = score_list[s].team;
+      if (tops[team] === null) {
+        tops[team] = score_list[s];
+      }
+    }
+
 
   };
   google.maps.event.addDomListener(window, 'load', initMap);

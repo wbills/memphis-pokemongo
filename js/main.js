@@ -183,9 +183,6 @@ $(function () {
     $("#mystic_gym_levels").html(average_gym_levels.Mystic);
     $("#valor_gym_levels").html(average_gym_levels.Valor);
 
-    $("#instinct_trainers").html(trainer_counts.Instinct);
-    $("#mystic_trainers").html(trainer_counts.Mystic);
-    $("#valor_trainers").html(trainer_counts.Valor);
 
     $("#last_updated").html("Last Updated:<br>" + last_updated);
 
@@ -244,10 +241,21 @@ $(function () {
     }
     var score_list = [];
     for (var k in trainer_score) {
-      score_list.push(trainer_score[k]);
+      score_list.push(
+        //trainer_score[k]
+        [
+          trainer_score[k].name,
+          trainer_score[k].team,
+          trainer_score[k].level,
+          trainer_score[k].gyms,
+          trainer_score[k].avg_cp,
+          trainer_score[k].points
+        ]
+      );
     }
     score_list = score_list.sort(function(a,b) {
-      return a.points - b.points;
+      return a[5] - b[5];
+      //return a.points - b.points;
     }).reverse();
     var tops = {
       "Instinct": null,
@@ -255,12 +263,30 @@ $(function () {
       "Valor": null
     };
     for (var s in score_list) {
-      var team = score_list[s].team;
+      var team = score_list[s][1];
+      //var team = score_list[s].team;
       if (tops[team] === null) {
         tops[team] = score_list[s];
       }
     }
 
+    $('#example').DataTable( {
+            data: score_list,
+            columns: [
+                { title: "Name" },
+                { title: "Team" },
+                { title: "Level" },
+                { title: "Gyms" },
+              //  { title: "Avg CP" },
+              //  { title: "Score" }
+            ],
+            order:[[3, 'desc']],
+            lengthMenu:[[15, 10, 25], [15,10,25]]
+        } );
+
+    //$("#instinct_trainers").html(tops.Instinct[0]);
+    //$("#mystic_trainers").html(tops.Mystic[0]);
+    //$("#valor_trainers").html(tops.Valor[0]);
 
   };
   google.maps.event.addDomListener(window, 'load', initMap);

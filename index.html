@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet">
         <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='css/style.css' rel='stylesheet' type='text/css'>
     </head>
@@ -13,7 +14,7 @@
             <div id="info" class="col-md-2">            
               <ul class="list-group">
                 <li class="list-group-item">
-                  <table class="table">
+                  <table class="table small">
                     <tbody>
                       <tr>
                         <td><h3 class="list-group-item-heading">Instinct</h3></td>
@@ -21,13 +22,12 @@
                       </tr>
                       <tr><td class="col-md-8">Current Gyms</td><td class="text-right" id="instinct_gyms">0</td></tr>
                       <tr><td class="col-md-8">Avg Gym Level</td><td class="text-right" id="instinct_gym_levels">0</td></tr>
-                      <tr><td class="col-md-8">Gym Trainers</td><td class="text-right" id="instinct_trainers">0</td></tr>
                     </tbody>
                   </table>
                 </li>
 
                 <li class="list-group-item">
-                  <table class="table">
+                  <table class="table small">
                     <tbody>
                       <tr>
                         <td><h3 class="list-group-item-heading">Mystic</h3></td>
@@ -35,13 +35,12 @@
                       </tr>
                       <tr><td class="col-md-8">Current Gyms</td><td class="text-right" id="mystic_gyms">0</td></tr>
                       <tr><td class="col-md-8">Avg Gym Level</td><td class="text-right" id="mystic_gym_levels">0</td></tr>
-                      <tr><td class="col-md-8">Gym Trainers</td><td class="text-right" id="mystic_trainers">0</td></tr>                      
                     </tbody>
                   </table>
                 </li>
 
                 <li class="list-group-item">
-                  <table class="table">
+                  <table class="table small">
                     <tbody>
                       <tr>
                         <td><h3 class="list-group-item-heading">Valor</h3></td>
@@ -49,7 +48,6 @@
                       </tr>
                       <tr><td class="col-md-8">Current Gyms</td><td class="text-right" id="valor_gyms">0</td></tr>
                       <tr><td class="col-md-8">Avg Gym Level</td><td class="text-right" id="valor_gym_levels">0</td></tr>
-                      <tr><td class="col-md-8">Gym Trainers</td><td class="text-right" id="valor_trainers">0</td></tr>                      
                     </tbody>
                   </table>
                 </li>
@@ -60,6 +58,11 @@
                     </label>
                   </div>
                 </li>
+                <li class="list-group-item">
+                  <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">
+                    Trainer Info
+                  </button>
+                </li>
                 <li class="list-group-item" id="last_updated">
                 </li>
               </ul>
@@ -69,10 +72,27 @@
               <div id="map"></div>
             </div>
           </div>
-        </div> 
+        </div>
+         
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <table id="example" class="table-responsive table-striped table-bordered" width="100%"></table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
         <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBf-YegM5aL1_q5aBZkrgl4oWWT097JZ_4&libraries=places"></script>
         <script src="js/pokestops.js"></script>
         <script src="js/gym_data.js"></script>

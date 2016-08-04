@@ -166,13 +166,13 @@ $(function () {
         var h = '<img src="' + data.image  + '" style="width: 100px; height:100px;"/>' +
                 '<table class="table"><tbody>' +
                 '<tr><td>Name</td><td>' + data.name  + '</td></tr>' +
-                '<tr><td>Team</td><td>' + data.team  + '</td></tr>' +
-                '<tr><td>Points</td><td>' + data.points + '</td></tr>' +
-                '<tr><td>Level</td><td>' + data.level + '</td></tr>' +
+                //'<tr><td>Team</td><td>' + data.team  + '</td></tr>' +
+                //'<tr><td>Points</td><td>' + data.points + '</td></tr>' +
+                //'<tr><td>Level</td><td>' + data.level + '</td></tr>' +
                 '</tbody></table>';
         return h;
       }, 
-      'team', { 'Valor': 'images/valor.png', 'Instinct': 'images/instinct.png', 'Mystic': 'images/mystic.png', 'None': 'images/Uncontested.png', 'size': 20, 'anchor': [10,20] });
+      'team', { 'Valor': 'images/instinct.png', 'Instinct': 'images/instinct.png', 'Mystic': 'images/instinct.png', 'None': 'images/instinct.png', 'size': 20, 'anchor': [10,20] });
     gym_layer.show();
 
     $("#instinct_gyms").html(gym_counts.Instinct);
